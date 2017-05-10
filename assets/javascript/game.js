@@ -1,36 +1,82 @@
+/*
+arrays
+	list of words
+	letters in word
+	letters guessed
+
+
+variables
+	number of guesses
+
+
+
+
+
+*/
+
+
+
+
+
 (function () {
 
-	const words = ['cat', 'dog', 'horse']
-
-	let word
+	const words = ['cat', 'dog', 'horse'];
+	let lettersInWord, numGuesses, inputElements;
+	let guessedLetters = [];
 
 	let randomWord = arr => {
 		const index = Math.floor(Math.random() * arr.length);
 		return arr[index];
 	};
-			
-	word = randomWord(words).split("");
+	
+
+	lettersInWord = randomWord(words).split("");
 	// console.log(word);
-	for (let i=0; i < word.length; i++) {
+	for (let i=0; i < lettersInWord.length; i++) {
 		let el = document.createElement("INPUT");
 		el.setAttribute("type", "text");
-		el.setAttribute("answer", word[i])
+		el.setAttribute("answer", lettersInWord[i])
 		document.body.appendChild(el);
 	};
 
-	let inputel = document.getElementsByTagName("INPUT");
-
-	for (let i=0; i < inputel.length; i++) {
-		console.log(inputel[i].getAttribute("answer"))	
-	}
 	
-	function getKey(e) {
-		var x = event.which;
+
+	inputElements = document.getElementsByTagName("INPUT");
+
+	let alreadyGuessed = (letter) => {
+		if (guessedLetters.indexOf(letter) > -1) {
+			return true;
+		} else {
+			return false;
+		};
+	};
+
+	let correctGuess = (letter) => {
+		if (lettersInWord.indexOf(letter) > -1) {
+			return true;
+		} else {
+			return false;
+		};
+	};
+
+	let getKey = e => {
+		let x = event.which;
 		x = (String.fromCharCode(x));
-		for (let i=0; i < inputel.length; i++) {
-			if (x === inputel[i].getAttribute("answer")) {
-				inputel[i].value = x
-				break
+		if (alreadyGuessed(x)) {
+			alert("You already Guessed this letter");
+		} else {
+			if (lettersInWord.indexOf(x) > -1) {
+				inputElements[lettersInWord.indexOf(x)].value = x;
+				guessedLetters.push(x);
+			} else {
+				guessedLetters.push(x);
+				numGuesses = document.getElementById("guesses").innerHTML
+				if (parseInt(numGuesses) < 0) {
+					alert("You Lose")
+				} else {
+					numGuesses -= 1
+					document.getElementById("guesses").innerHTML = numGuesses.toString();
+				};
 			};
 		};
 	};
