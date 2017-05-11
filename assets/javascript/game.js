@@ -65,17 +65,22 @@ variables
 		if (alreadyGuessed(x)) {
 			alert("You already Guessed this letter");
 		} else {
-			if (lettersInWord.indexOf(x) > -1) {
+			if (correctGuess(x)) {
 				inputElements[lettersInWord.indexOf(x)].value = x;
 				guessedLetters.push(x);
 			} else {
 				guessedLetters.push(x);
-				numGuesses = document.getElementById("guesses").innerHTML
+				numGuesses = document.getElementById("guesses").innerHTML;
 				if (parseInt(numGuesses) < 0) {
 					alert("You Lose")
 				} else {
 					numGuesses -= 1
 					document.getElementById("guesses").innerHTML = numGuesses.toString();
+					let el = document.getElementById('letters-container');
+					let newEl = document.createElement('DIV');
+					newEl.setAttribute('class', 'guessed-letter');
+					newEl.innerHTML = x
+					el.appendChild(newEl);
 				};
 			};
 		};

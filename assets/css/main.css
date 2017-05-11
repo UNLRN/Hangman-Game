@@ -1,0 +1,17 @@
+#letters-container {
+    margin: 0 auto;
+    width: 100px;
+    height: auto;
+    display: table;
+}
+
+.guessed-letter {
+    background-color: #ccc;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 3px;
+    display: table-cell;
+}
