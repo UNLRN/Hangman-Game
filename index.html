@@ -8,7 +8,10 @@
 </head>
 
 <body>
-    <div class="container main grey lighten-2">
+    <div id='background'>
+        <div class="container center-align">
+            <img id="logo" src="./assets/images/logo.jpg" alt="">
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col m12 center-align">
@@ -42,15 +45,13 @@
             </div>
         </div>
         <div class="container">
-            <div class="col m5 card-panel blue-grey darken-1 white-text valign-wrapper center-align">
-                <div class="row">
-                    <h5>
-						You have <span id="guesses">7</span> guesses left.
-						</h5>
-                </div>
+            <div class="col m5 card-panel yellow center-align">
+                    <h5 class="center-align">
+					You have <span id="guesses">10</span> guesses left.
+					</h5>
             </div>
             <div class="col m2"></div>
-            <div class="col m5 card-panel blue-grey darken-1 white-text center-align" id="game-word">
+            <div class="col m5 card-panel yellow center-align" id="game-word">
             </div>
         </div>
     </div>
